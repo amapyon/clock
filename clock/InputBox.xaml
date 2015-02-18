@@ -1,0 +1,10 @@
+﻿<Window x:Name="inputBox" x:Class="clock.InputBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Input" Height="81.081" Width="258.984" ResizeMode="NoResize">
+    <Grid Margin="0,0,4,0">
+        <Button x:Name="btnOK" Content="OK" HorizontalAlignment="Left" Height="27" Margin="182,10,0,0" VerticalAlignment="Top" Width="57" Click="btnOK_Click"/>
+        <TextBox x:Name="txtValue" HorizontalAlignment="Left" Height="27" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="167"/>
+
+    </Grid>
+</Window>

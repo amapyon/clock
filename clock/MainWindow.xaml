@@ -1,0 +1,78 @@
+﻿<Window x:Class="clock.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Height="280" Width="547" ResizeMode="CanResizeWithGrip" Background="Black" Foreground="White" Loaded="Window_Loaded" Icon="clock.png" StateChanged="Window_StateChanged">
+    <Window.ContextMenu>
+        <ContextMenu>
+            <MenuItem Name="mitmDuplicate" Header="複製" Click="mitmDuplicate_Click"/>
+            <Separator/>
+            <MenuItem Header="1分延長" Click="mitmIncrement_Click"/>
+            <MenuItem Header="3分延長" Click="mitmIncrement_Click"/>
+            <MenuItem Header="5分延長" Click="mitmIncrement_Click"/>
+            <MenuItem Header="10分延長" Click="mitmIncrement_Click"/>
+            <Separator/>
+            <MenuItem Header="1分短縮" Click="mitmIncrement_Click"/>
+            <MenuItem Header="3分短縮" Click="mitmIncrement_Click"/>
+            <MenuItem Header="5分短縮" Click="mitmIncrement_Click"/>
+        </ContextMenu>
+    </Window.ContextMenu>
+    <DockPanel>
+        <StackPanel x:Name="pnlControl" DockPanel.Dock="Bottom">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Slider x:Name="sldFontSize" Grid.Column="0" Maximum="500" SmallChange="1" LargeChange="10" Value="80" ValueChanged="sldFontSize_ValueChanged" Minimum="1" BorderThickness="0" Background="{x:Null}" Margin="5,0,5,3">
+                    <Slider.Foreground>
+                        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlColorKey}}"/>
+                    </Slider.Foreground>
+                </Slider>
+            </Grid>
+            <Grid x:Name="pnlButton" Height="50" Width="Auto" VerticalAlignment="Bottom" Margin="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.2*" MinWidth="35"/>
+                    <ColumnDefinition Width="1.2*" MinWidth="35"/>
+                    <ColumnDefinition Width="1.2*" MinWidth="35"/>
+                    <ColumnDefinition Width="1.2*" MinWidth="35"/>
+                    <ColumnDefinition Width="1*" MinWidth="35"/>
+                    <ColumnDefinition Width="1*" MinWidth="35"/>
+                    <ColumnDefinition Width="1*" MinWidth="35"/>
+                    <ColumnDefinition Width="1*" MinWidth="35"/>
+                    <ColumnDefinition Width="1*" MinWidth="35"/>
+                    <ColumnDefinition Width="1*" MinWidth="35"/>
+                    <ColumnDefinition Width="1*" MinWidth="35"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnClock" Grid.Column="0" Content="時計" Click="btnClock_Click"/>
+                <Button x:Name="btnStopWatch" Grid.Column="1" Content="SW" Click="btnStopWatch_Click"/>
+                <Button x:Name="btnStart" Grid.Column="2" Content="開始" Click="btnStart_Click"/>
+                <Button x:Name="btnPause" Grid.Column="3" Content="停止" Click="btnPause_Click"/>
+                <Button x:Name="btnCountDown_1" Grid.Column="4" Content="1分" Click="btnCountDown_Click" MouseRightButtonUp="btnCountDown_MouseRightButtonUp"/>
+                <Button x:Name="btnCountDown_2" Grid.Column="5" Content="3分" Click="btnCountDown_Click" MouseRightButtonUp="btnCountDown_MouseRightButtonUp"/>
+                <Button x:Name="btnCountDown_3" Grid.Column="6" Content="5分" Click="btnCountDown_Click" MouseRightButtonUp="btnCountDown_MouseRightButtonUp"/>
+                <Button x:Name="btnCountDown_4" Grid.Column="7" Content="7分" Click="btnCountDown_Click" MouseRightButtonUp="btnCountDown_MouseRightButtonUp"/>
+                <Button x:Name="btnCountDown_5" Grid.Column="8" Content="10分" Click="btnCountDown_Click" MouseRightButtonUp="btnCountDown_MouseRightButtonUp"/>
+                <Button x:Name="btnCountDown_6" Grid.Column="9" Content="20分" Click="btnCountDown_Click" MouseRightButtonUp="btnCountDown_MouseRightButtonUp"/>
+                <Button x:Name="btnCountDown_7" Grid.Column="10" Content="30分" Click="btnCountDown_Click" MouseRightButtonUp="btnCountDown_MouseRightButtonUp"/>
+            </Grid>
+
+        </StackPanel>
+        <Grid x:Name="pnlBase" Margin="1,0" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition x:Name="rfMessage" Height="Auto" MinHeight="25" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition x:Name="rfDisplay" Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBox x:Name="txtMessage" Grid.Row="0" TextWrapping="Wrap" FontSize="18" Background="{x:Null}" Foreground="White" BorderThickness="0" TextAlignment="Center" SizeChanged="txtMessage_SizeChanged" Margin="0" AllowDrop="True" TextChanged="txtMessage_TextChanged" />
+            <GridSplitter x:Name="gsMassagePane" VerticalAlignment="Top" HorizontalAlignment="Stretch"
+                      Grid.Row="1"
+                      Width="Auto" Height="4" BorderThickness="0,0,0,0" ResizeBehavior="PreviousAndNext" >
+                <GridSplitter.Background>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlLightColorKey}}"/>
+                </GridSplitter.Background>
+            </GridSplitter>
+            <StackPanel x:Name="pnlDisplay" Orientation="Vertical" Grid.Row="2" Grid.RowSpan="2" Margin="0,0,0,0" VerticalAlignment="Center" >
+                <Label x:Name="txtDate" VerticalAlignment="Top" FontStretch="Expanded" VerticalContentAlignment="Center" HorizontalAlignment="Center" FontSize="16" Foreground="White" Content=".."/>
+                <Label x:Name="txtTime" FontStretch="UltraExpanded" VerticalContentAlignment="Center" HorizontalAlignment="Center" Content="00:00" Foreground="White" FontSize="72" FontWeight="Bold" VerticalAlignment="Center" Margin="0,-15,0,0"/>
+            </StackPanel>
+        </Grid>
+    </DockPanel>
+</Window>
