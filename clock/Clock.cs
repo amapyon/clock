@@ -74,11 +74,8 @@ namespace clock
         }
 
         public void Clear() { }
-
-        public void Increment(string time)
-        {
-            // 何もしない
-        }
+        public void Increment(string time) {}
+        public void ChangeFormat() {}
 
     }
 }

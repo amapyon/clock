@@ -119,6 +119,12 @@ namespace clock
             w.Show();
         }
 
+        private void mitmFormat_Click(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("Event: mitmFormat_Click");
+            timer.ChangeFormat();
+        }
+
         private void mitmIncrement_Click(object sender, RoutedEventArgs e)
         {
             MenuItem item = (MenuItem)sender;

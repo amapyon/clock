@@ -4,6 +4,7 @@
     <Window.ContextMenu>
         <ContextMenu>
             <MenuItem Name="mitmDuplicate" Header="複製" Click="mitmDuplicate_Click"/>
+            <MenuItem Name="mitmFormat" Header="表示形式" Click="mitmFormat_Click"/>
             <Separator/>
             <MenuItem Header="1分延長" Click="mitmIncrement_Click"/>
             <MenuItem Header="3分延長" Click="mitmIncrement_Click"/>

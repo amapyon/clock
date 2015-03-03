@@ -12,5 +12,6 @@ namespace clock
         void Pause();
         void Clear();
         void Increment(string time);
+        void ChangeFormat();
     }
 }

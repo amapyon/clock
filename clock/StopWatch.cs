@@ -91,6 +91,7 @@ namespace clock
 
 
         public void Increment(string time) { }
+        public void ChangeFormat() { }
 
     }
 }

@@ -23,6 +23,9 @@ namespace clock
         private static int limitSec;
         private static Stopwatch stopwatch;
 
+        private enum ViewMode { S, MMSS };
+        private static ViewMode viewMode = ViewMode.MMSS;
+
         private CountDownTimer() { }
 
         public static CountDownTimer GetInstance(List<MainWindow> windows, string time)
@@ -93,16 +96,31 @@ namespace clock
                 {
                     w.Dispatcher.Invoke((Action)(() =>
                     {
-
-                        if (remainSec < 0)
+                        if (viewMode == ViewMode.S)
                         {
-                            w.txtTime.Content = String.Format("{0:0}:{1:00}", 0, 0);
-                            UiUtil.SetDisableColor(w.txtTime);
+                            if (remainSec < 0)
+                            {
+                                w.txtTime.Content = String.Format("{0:0}", 0);
+                                UiUtil.SetDisableColor(w.txtTime);
+                            }
+                            else
+                            {
+                                w.txtTime.Content = String.Format("{0:0}", remainSec);
+                            }
                         }
                         else
                         {
-                            w.txtTime.Content = String.Format("{0:0}:{1:00}", mm, ss);
+                            if (remainSec < 0)
+                            {
+                                w.txtTime.Content = String.Format("{0:0}:{1:00}", 0, 0);
+                                UiUtil.SetDisableColor(w.txtTime);
+                            }
+                            else
+                            {
+                                w.txtTime.Content = String.Format("{0:0}:{1:00}", mm, ss);
+                            }
                         }
+
                     }
                     ));
                 }
@@ -150,6 +168,18 @@ namespace clock
             }
 */
             limitSec += sec;
+        }
+
+        public void ChangeFormat()
+        {
+            if (viewMode == ViewMode.MMSS)
+            {
+                viewMode = ViewMode.S;
+            }
+            else
+            {
+                viewMode = ViewMode.MMSS;
+            }
         }
 
     }
