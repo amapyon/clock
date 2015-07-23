@@ -28,19 +28,19 @@
                     </Slider.Foreground>
                 </Slider>
             </Grid>
-            <Grid x:Name="pnlButton" Height="50" Width="Auto" VerticalAlignment="Bottom" Margin="0">
+            <Grid x:Name="pnlButton" Height="30" Width="Auto" VerticalAlignment="Bottom" Margin="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1.2*" MinWidth="35"/>
-                    <ColumnDefinition Width="1.2*" MinWidth="35"/>
-                    <ColumnDefinition Width="1.2*" MinWidth="35"/>
-                    <ColumnDefinition Width="1.2*" MinWidth="35"/>
-                    <ColumnDefinition Width="1*" MinWidth="35"/>
-                    <ColumnDefinition Width="1*" MinWidth="35"/>
-                    <ColumnDefinition Width="1*" MinWidth="35"/>
-                    <ColumnDefinition Width="1*" MinWidth="35"/>
-                    <ColumnDefinition Width="1*" MinWidth="35"/>
-                    <ColumnDefinition Width="1*" MinWidth="35"/>
-                    <ColumnDefinition Width="1*" MinWidth="35"/>
+                    <ColumnDefinition Width="1.2*" MinWidth="32"/>
+                    <ColumnDefinition Width="1.2*" MinWidth="32"/>
+                    <ColumnDefinition Width="1.2*" MinWidth="32"/>
+                    <ColumnDefinition Width="1.2*" MinWidth="32"/>
+                    <ColumnDefinition Width="1*" MinWidth="32"/>
+                    <ColumnDefinition Width="1*" MinWidth="32"/>
+                    <ColumnDefinition Width="1*" MinWidth="32"/>
+                    <ColumnDefinition Width="1*" MinWidth="32"/>
+                    <ColumnDefinition Width="1*" MinWidth="32"/>
+                    <ColumnDefinition Width="1*" MinWidth="32"/>
+                    <ColumnDefinition Width="1*" MinWidth="32"/>
                 </Grid.ColumnDefinitions>
                 <Button x:Name="btnClock" Grid.Column="0" Content="時計" Click="btnClock_Click"/>
                 <Button x:Name="btnStopWatch" Grid.Column="1" Content="SW" Click="btnStopWatch_Click"/>
@@ -71,7 +71,7 @@
                 </GridSplitter.Background>
             </GridSplitter>
             <StackPanel x:Name="pnlDisplay" Orientation="Vertical" Grid.Row="2" Grid.RowSpan="2" Margin="0,0,0,0" VerticalAlignment="Center" >
-                <Label x:Name="txtDate" VerticalAlignment="Top" FontStretch="Expanded" VerticalContentAlignment="Center" HorizontalAlignment="Center" FontSize="16" Foreground="White" Content=".."/>
+                <Label x:Name="txtDate" VerticalAlignment="Top" FontStretch="Expanded" VerticalContentAlignment="Center" HorizontalAlignment="Center" FontSize="14" Foreground="White" Content=".."/>
                 <Label x:Name="txtTime" FontStretch="UltraExpanded" VerticalContentAlignment="Center" HorizontalAlignment="Center" Content="00:00" Foreground="White" FontSize="72" FontWeight="Bold" VerticalAlignment="Center" Margin="0,-15,0,0"/>
             </StackPanel>
         </Grid>
