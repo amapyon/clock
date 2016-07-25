@@ -24,6 +24,7 @@ namespace clock
     {
         private static Timer timer;
         private static List<MainWindow> windows = new List<MainWindow>();
+        private static bool isThrogh = false;
 
         public MainWindow()
         {
@@ -70,7 +71,6 @@ namespace clock
         {
             try
             {
-//                this.txtDate.Content = e.NewValue.ToString();
                 this.txtTime.FontSize = (int)e.NewValue;
             }
             catch (NullReferenceException exception)
@@ -152,6 +152,105 @@ namespace clock
                     }
                 }
             }
+        }
+
+        private void mitmTopmost_Click(object sender, RoutedEventArgs e)
+        {
+            this.Topmost = mitmTopmost.IsChecked;
+        }
+
+        private void mitmHelp_Click(object sender, RoutedEventArgs e)
+        {
+            HelpWindow hw = new HelpWindow();
+            hw.ShowDialog();
+        }
+
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            Console.WriteLine("KeyDown:[" + Keyboard.Modifiers + "]+" + e.Key);
+            System.Drawing.Point p = new System.Drawing.Point((int)this.Left, (int)this.Top);
+            System.Drawing.Rectangle area = System.Windows.Forms.Screen.GetWorkingArea(p);
+            Console.WriteLine("WorkingArea:" + area);
+
+            System.Windows.PresentationSource s = PresentationSource.FromVisual(this);
+            double scaleX = s.CompositionTarget.TransformToDevice.M11;
+            double scaleY = s.CompositionTarget.TransformToDevice.M22;
+            Console.WriteLine("Sclae:" + scaleX + ", " + scaleY);
+
+            if ((Keyboard.Modifiers & ModifierKeys.Control) != ModifierKeys.None && (Keyboard.Modifiers & ModifierKeys.Shift) != ModifierKeys.None)
+            {
+                if (e.Key == Key.Left)
+                {
+                    this.Left = area.Left / scaleX;
+                }
+                else if (e.Key == Key.Right)
+                {
+                    this.Left = ((area.X + area.Width) / scaleX) - this.Width;
+                }
+                else if (e.Key == Key.Up)
+                {
+                    this.Top = area.Y / scaleY;
+                }
+                else if (e.Key == Key.Down)
+                {
+                    this.Top = ((area.Y + area.Height) / scaleY) - this.Height;
+                }
+
+            }
+            else if ((Keyboard.Modifiers & ModifierKeys.Control) != ModifierKeys.None)
+            {
+                if (e.Key == Key.Left)
+                {
+                    this.Width -= 3;
+                }
+                else if (e.Key == Key.Right)
+                {
+                    this.Width += 3;
+
+                }
+                else if (e.Key == Key.Up)
+                {
+                    this.Height -= 3;
+                }
+                else if (e.Key == Key.Down)
+                {
+                    this.Height += 3;
+                }
+            }
+            else if ((Keyboard.Modifiers & ModifierKeys.Shift) != ModifierKeys.None)
+            {
+                if (e.Key == Key.Left)
+                {
+                    this.Left -= 3;
+                }
+                else if (e.Key == Key.Right)
+                {
+                    this.Left += 3;
+
+                }
+                else if (e.Key == Key.Up)
+                {
+                    this.Top -= 3;
+                }
+                else if (e.Key == Key.Down)
+                {
+                    this.Top += 3;
+                }
+            }
+            else
+            {
+                if (e.Key == Key.Left)
+                {
+                    this.sldFontSize.Value -= 1;
+                }
+                else if (e.Key == Key.Right)
+                {
+                    this.sldFontSize.Value += 1;
+                }
+            }
+            Console.WriteLine("Top:" + this.Top + ", Left:" + this.Left + ", Width:" + this.Width + ", Height:" + this.Height);
+
         }
 
     }

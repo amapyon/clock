@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Threading;
 
 namespace clock
 {
@@ -88,7 +79,6 @@ namespace clock
                 Thread.Sleep(200);
             }
         }
-
 
         public void Increment(string time) { }
         public void ChangeFormat() { }

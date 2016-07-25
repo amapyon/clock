@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Threading;
 
 namespace clock
 {
@@ -43,15 +35,15 @@ namespace clock
 
         private static int ParseTime(string time)
         {
-            int number = int.Parse(time.Substring(0, time.Length - 1));
+            float number = float.Parse(time.Substring(0, time.Length - 1));
             string unit = time.Substring(time.Length - 1);
 
             switch (unit)
             {
                 case "秒":
-                    return number;
+                    return (int)number;
                 case "分":
-                    return number * 60;
+                    return (int)(number * 60);
                 default:
                     return 0;
             }
@@ -136,6 +128,11 @@ namespace clock
 
         }
 
+        protected bool isThrugh()
+        {
+            return false;
+        }
+
 
         public void Clear() { }
 
@@ -157,16 +154,7 @@ namespace clock
                 }
                 Console.WriteLine(sec);
             }
-/*
-            Console.WriteLine(mc.Count);
-            foreach (Match m in mc)
-            {
-                Console.WriteLine(m.Value);
-                Console.WriteLine(m.Groups["minuts"].Value);
-                Console.WriteLine(m.Groups["unit"].Value);
-                Console.WriteLine(m.Groups["inc"].Value);
-            }
-*/
+
             limitSec += sec;
         }
 
